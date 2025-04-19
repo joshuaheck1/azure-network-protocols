@@ -5,7 +5,7 @@
 <h1>Observing Network Traffic and Network Security Group (NSG) Functions between Azure Virtual Machines</h1>
 In this project, we will observe various network traffic to and from Azure Virtual Machines with Wireshark as well as experiment with Network Security Groups. <br />
 
-<h2>Pre-requisite:</h2>
+<h2>List of Prerequisites</h2>
 
 - [Creating Virtual Machines in the Cloud](https://github.com/joshuaheck1/VM-creation)
   
