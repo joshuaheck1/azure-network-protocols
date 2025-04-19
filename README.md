@@ -24,10 +24,12 @@ In this project, we will observe various network traffic to and from Azure Virtu
 
 <h2>High-Level Steps</h2>
 
-- Step 1: Observe ICMP Traffic
-- Step 2: Use NSG (Firewall) to Deny Ping
-- Step 3: Observe SSH and DHCP Traffic
-- Step 4: Observe DNS and RDP Traffic
+- Step 1: Create RDP Connection to VM
+- Step 2: Install Wirshark (Protocol Analyzer)
+- Step 3: Observe ICMP Traffic
+- Step 4: Use NSG (Firewall) to Deny Ping
+- Step 5: Observe SSH and DHCP Traffic
+- Step 6: Observe DNS and RDP Traffic
 
 <h2>Actions and Observations</h2>
 
