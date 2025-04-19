@@ -2,15 +2,16 @@
 <img src="https://i.imgur.com/Ua7udoS.png" alt="Traffic Examination"/>
 </p>
 
-<h1>Network Security Groups (NSGs) and Inspecting Traffic Between Azure Virtual Machines</h1>
-In this tutorial, we observe various network traffic to and from Azure Virtual Machines with Wireshark as well as experiment with Network Security Groups. <br />
+<h1>Observing Network Traffic and Network Security Group (NSG) Functions between Azure Virtual Machines</h1>
+In this project, we will observe various network traffic to and from Azure Virtual Machines with Wireshark as well as experiment with Network Security Groups. <br />
 
+<h2>Pre-requisite: Creating Azure Virtual Machines</h2>
 
 <h2>Environments and Technologies Used</h2>
 
 - Microsoft Azure (Virtual Machines/Compute)
-- Remote Desktop
-- Various Command-Line Tools
+- Remote Desktop (Windows) / Windows App (MacOS)
+- PowerShell
 - Various Network Protocols (SSH, RDH, DNS, HTTP/S, ICMP)
 - Wireshark (Protocol Analyzer)
 
@@ -21,10 +22,10 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 
 <h2>High-Level Steps</h2>
 
-- Step 1
-- Step 2
-- Step 3
-- Step 4
+- Step 1: Observe ICMP Traffic
+- Step 2: Use NSG (Firewall) to Deny Ping
+- Step 3: Observe SSH and DHCP Traffic
+- Step 4: Observe DNS and RDP Traffic
 
 <h2>Actions and Observations</h2>
 
