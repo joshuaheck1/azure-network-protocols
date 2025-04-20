@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://i.imgur.com/Ua7udoS.png" alt="Traffic Examination"/>
+<img src="https://i.imgur.com/Ua7udoS.png" alt="Traffic Examination" width="450"/>
 </p>
 
 <h1>Observing Network Traffic and Network Security Group (NSG) Functions between Azure Virtual Machines</h1>
@@ -151,7 +151,6 @@ In this project, we will observe various network traffic to and from Azure Virtu
 <br />
 
 <h3>Step 2: Use NSG (Firewall) to Deny Ping</h3>
-
 <p>
 <img width="850" alt="NSG23" src="https://github.com/user-attachments/assets/488a7f94-86ca-40f3-8c8d-630fedcb2493" />
 </p>
@@ -181,14 +180,110 @@ In this project, we will observe various network traffic to and from Azure Virtu
 
 <p>
 <img width="850" alt="NSG26" src="https://github.com/user-attachments/assets/d7498c96-ec40-4300-b392-c1741c262f6f" />
+
+<img width="850" alt="NSG27" src="https://github.com/user-attachments/assets/b4d40127-3623-4afa-aa9a-ac07e69aa270" />
 </p>
 
 <p>
-- Look at that! Our new Security Rule has been created and at the top of the list. Now we will go back to the windows-vm and see what happens. 👀
+- Figure 17 shows when the ping request starts to time out in PowerShell because of the new rule we created in the Network Security Group. 
+- We can see in Figure 18 exactly when the rule took effect and started to deny the ping request from the windows-vm in Wireshark. It even has a timestamp!
 </p>
 <br />
 
+<p>
+<img width="850" alt="NSG29" src="https://github.com/user-attachments/assets/1e12ca49-9387-4d15-83c8-c758bb5f8778" />
 
+<img width="850" alt="NSG30" src="https://github.com/user-attachments/assets/e4358c68-7c66-48cf-ade4-4a5c70f5ee92" />
+</p>
+
+<p>
+- Now, we will visit Azure real quick and delete the security rule we created. Check the box next to our rule and click the trash can to the right. Click "Yes" to confirm. With the rule deleted, the ping from the windows-vm to the linux-vm should start back up. Lets run back to the windows-vm and check it out. 🏃‍♂️
+</p>
+
+<p>
+- In Figure 20, we can see via Wireshark and PowerShell that the ping started back up. Wireshark is showing the request and reply. PowerShell is showing Replies from 10.0.0.5 again. Let's Go! (To stop the perpetual ping, press Ctrl + C in PoweShell)😏
+</p>
+<br />
+
+<h3>Step 3: Observe SSH and DHCP Traffic</h3>
+<p>
+<img width="850" alt="SSH1" src="https://github.com/user-attachments/assets/6ea801a4-b06c-42cb-aa06-234f673d8584" />
+
+<img width="850" alt="SSH3" src="https://github.com/user-attachments/assets/3f1ae60b-20b1-4408-8da3-baee50f63363" />
+</p>
+
+<p>
+- Now we are going to observe some SSH Traffic. In Wireshark, type ssh into the filter bar and start a new capture. In PowerShell, we will create a secure connection to the linux-vm with the command ssh username@PrivateIP.(username and Private IP of the linux-vm) Example = ssh jheck1@10.0.0.5 and press enter. It will ask are you sure. Type yes and press enter again. Now, you will need to enter the password of the linux-vm. FYI... as you type in the password, it will remain blank. Type in the password and press enter. Refer to Figure 21.
+</p>
+
+<p>
+- As you can see in Figure 22, we now have a secure and encrypted connection between the windows-vm and linux-vm. Look at those encrypted packets in Wireshark! 🔐 🚔
+</p>
+<br />
+
+<p>
+<img width="850" alt="SSH4" src="https://github.com/user-attachments/assets/c2ec353e-546e-4ee1-b89b-2f109f0d1d8f" />
+</p>
+
+<p>
+- Now that we are done observing SSH traffic, simply type the command exit and press enter in PowerShell. "Connection to 10.0.0.5 closed" will appear. Next, we will look at some DHCP traffic. 
+</p>
+<br />
+
+<p>
+<img width="850" alt="DHCP1" src="https://github.com/user-attachments/assets/93a7227e-1e04-405f-b917-50a6e20c8efa" />
+
+<img width="850" alt="DHCP2" src="https://github.com/user-attachments/assets/f29464d7-627b-4950-a884-708625174fe0" />
+</p>
+
+<p>
+- Type dhcp into the filter bar of Wireshark and start a new capture. In Powershell, type the command ipconfig /renew and press enter. Well that wasn't very exciting at all was it? Not much happened.😒 Lets direct our attention to Figure 25 for a moment because Figure 24 was a snooze fest. 😴
+</p>
+
+<p>
+- So, Figure 25. What is this all about? Well, we can't use the command ipconfig /release in PowerShell because we will loose our connection to the windows-vm. We came here to see some DHCP Traffic, so lets create some. Open the Notepad on the windows-vm. Type in, ipconfig /release and ipconfig /renew like you see in Figure 25. Now, save that in C:\ProgramData as dhcp.bat and click save. Now lets hop back over to PowerShell.
+</p>
+<br />
+<p>
+<img width="850" alt="DHCP3" src="https://github.com/user-attachments/assets/2f816a07-96d7-48d7-ab6f-7721220eb7e9" />
+
+<img width="850" alt="DHCP4" src="https://github.com/user-attachments/assets/5a2880b1-eb24-4b33-a4f7-7c3eb7634b43" />
+</p>
+
+<p>
+- In Powershell, we are going to change directories with the command cd c:\programdata and press enter. Now, list what files are in this directory with the command ls and press enter. Next, run our bat file, dhcp.bat, that we just created with the command .\dhcp.bat and press enter. See Figure 26.
+</p>
+
+<p>
+- You will see the ipconfig /release and the windows-vm will disconnect for a second, but it will fire back up pretty quick once the windows-vm renews the IP. Now take a look at Wireshark and PowerShell in Figure 27. We can see the actual proccess in action! DHCP traffic as promised.🤯 Big shout out to Josh Madakor for this little trick. 🫡
+</p>
+<br />
+
+<h3>Step 5: Observe DNS and RDP Traffic</h3>
+<p>
+<img width="850" alt="DNS1" src="https://github.com/user-attachments/assets/0ad0edf0-a43d-46e9-b477-b33e00639b76" />
+
+<img width="850" alt="DNS2" src="https://github.com/user-attachments/assets/5aa050be-bde6-4f25-852c-1df42b6894bd" />
+</p>
+
+<p>
+- Time for some DNS traffic. In the Wireshark filter bar, type in dns and start a new capture. Over in PowerShell, type in the command nslookup disney.com and press enter. PowerShell shows us the an IP for Disney. Lets copy that IP, take it the browser, and see what we get when we run a search. See Figure 28. 
+</p>
+
+<p>
+- What is this? 🤨 Even Wreck-it-Ralph looks confused. We can see that the IP, 130.211.198.204, is clearly related to Disney somehow. Notice the Disney logo by the IP address? Here are a couple things to consider. 1) We probably are not authorized to see what this IP really is. 2) DNS protocol translates human-readable domain names into machine-readable IP addresses. Very few websites can be accessed by typing the IP address directly into the address bar of a browser. Still, pretty cool stuff. 
+</p>
+<br />
+
+<p>
+<img width="850" alt="RDP1" src="https://github.com/user-attachments/assets/7a4c3d8b-2ce0-441c-89ce-e45520c51cad" />
+
+<img width="850" alt="RDP2" src="https://github.com/user-attachments/assets/e2370e30-1b5e-492b-bbf1-cb2b80173138" />
+</p>
+
+<p>
+- Last but certainly not least. Lets look at some RDP traffic and switch it up a bit. Filter the traffic by the Port RDP uses. In the filter bar, type tcp.port == 3389 and start a new capture. Notice all the packets just zooming through? We saw this same thing at the beginning of this project. We have been running a virtual machine using RDP (Remote Desktop Protocol) this entire time! There is traffic constantly flowing over the network while we are connected to the windows-vm. Also, you can filter in Wireshark with rdp in the filter bar.  
+</p>
 
 
 
