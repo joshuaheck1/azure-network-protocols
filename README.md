@@ -289,7 +289,8 @@ In this project, we will observe various network traffic to and from Azure Virtu
 <h2>Summary</h2>
 
 <p>
-This concludes our project. We sucessfully connected to our windows-vm using RDP and observed a ton of network traffic with various protocols using Wireshark and PowerShell. I highly recommed hitting the YouTube and checking out more about both. The more tools you are familiar with, the better. Hey, we even dipped our pinky toe into the vast ocean of Cybersecurity by creating a new security rule to deny inbound traffic. Maybe that was a stretch, but still fun stuff. Hopefully you learned something that you didn't know before and possibily had a little fun at the same time. I know Wreck-it-Ralph did. As always, Thank You for your time and viewing this Project. We'll see you on the next one! 😎      
+This concludes our project. We sucessfully connected to our windows-vm using RDP and observed a ton of network traffic with various protocols using Wireshark and PowerShell. I highly recommed hitting the YouTube and checking out more about both. The more tools you are familiar with, the better. Hey, we even dipped our pinky toe into the vast ocean of Cybersecurity by creating a new security rule to deny inbound traffic. Maybe that was a stretch, but still fun stuff.</p> 
+<p>Hopefully, you learned something that you didn't know before and possibily had a little fun at the same time. I know Wreck-it-Ralph did. Don't forget to Stop (turn off) the VMs in Azure. As always, Thank You for your time and viewing this Project. We'll see you on the next one!😎      
 </p>
 <br />
 
