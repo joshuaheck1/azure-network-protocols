@@ -11,8 +11,9 @@ In this project, we will observe various network traffic to and from Azure Virtu
   
 <h2>Environments and Technologies Used</h2>
 
+- macOS Sequoia
 - Microsoft Azure (Virtual Machines/Compute)
-- Remote Desktop (Windows) / Windows App (MacOS)
+- Remote Desktop (Windows) / Windows App (macOS)
 - PowerShell
 - Various Network Protocols (SSH, RDH, DNS, HTTP/S, ICMP)
 - Wireshark (Protocol Analyzer)
