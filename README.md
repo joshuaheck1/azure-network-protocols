@@ -287,7 +287,7 @@ In this project, we will observe various network traffic to and from Azure Virtu
 - Last but certainly not least. Lets look at some RDP traffic and switch it up a bit. Filter the traffic by the Port RDP uses. In the filter bar, type tcp.port == 3389 and start a new capture. Notice all the packets just zooming through? We saw this same thing at the beginning of this project. We have been running a virtual machine using RDP (Remote Desktop Protocol) this entire time! There is traffic constantly flowing over the network while we are connected to the windows-vm. Also, you can filter in Wireshark with rdp in the filter bar. See figure 31. 
 </p>
 
-<h2>Summary</h2>
+<h2>Conclusion</h2>
 
 <p>
 This concludes our project. We sucessfully connected to our windows-vm using RDP and observed a ton of network traffic with various protocols using Wireshark and PowerShell. I highly recommed hitting the YouTube and checking out more about both. The more tools you are familiar with, the better. Hey, we even dipped our pinky toe into the vast ocean of Cybersecurity by creating a new security rule to deny inbound traffic. Maybe that was a stretch, but still fun stuff.</p> 
