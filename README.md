@@ -5,11 +5,11 @@
 <h1>Observing Network Traffic and Network Security Group (NSG) Functions between Azure Virtual Machines</h1>
 In this project, we will observe various network traffic to and from Azure Virtual Machines with Wireshark as well as experiment with Network Security Groups. <br />
 
-<h2>Prerequisite</h2>
+<h2>⚠️ Prerequisite</h2>
 
 - [Creating Virtual Machines in the Cloud](https://github.com/joshuaheck1/VM-creation)
   
-<h2>Environments and Technologies Used</h2>
+<h2>💻 Environments and Technologies Used</h2>
 
 - Microsoft Azure (Virtual Machines/Compute)
 - Remote Desktop
@@ -18,13 +18,13 @@ In this project, we will observe various network traffic to and from Azure Virtu
 - Various Network Protocols (SSH, RDH, DNS, HTTP/S, ICMP)
 - Wireshark (Protocol Analyzer)
 
-<h2>Operating Systems Used </h2>
+<h2>👨‍💻 Operating Systems Used </h2>
 
 - macOS Sequoia
 - Windows 10 (21H2)
 - Ubuntu Server 20.04
 
-<h2>High-Level Steps</h2>
+<h2>🪜 High-Level Steps</h2>
 
 - Step 1: Connect to VM using RDP & Install Wireshark
 - Step 2: Observe ICMP Traffic
@@ -287,7 +287,7 @@ In this project, we will observe various network traffic to and from Azure Virtu
 - Last but certainly not least. Lets look at some RDP traffic and switch it up a bit. Filter the traffic by the Port RDP uses. In the filter bar, type tcp.port == 3389 and start a new capture. Notice all the packets just zooming through? We saw this same thing at the beginning of this project. We have been running a virtual machine using RDP (Remote Desktop Protocol) this entire time! There is traffic constantly flowing over the network while we are connected to the windows-vm. Also, you can filter in Wireshark with rdp in the filter bar. See figure 31. 
 </p>
 
-<h2>Conclusion</h2>
+<h2>✅ Conclusion</h2>
 
 <p>
 This concludes our project. We sucessfully connected to our windows-vm using RDP and observed a ton of network traffic with various protocols using Wireshark and PowerShell. I highly recommed hitting the YouTube and checking out more about both. The more tools you are familiar with, the better. Hey, we even dipped our pinky toe into the vast ocean of Cybersecurity by creating a new security rule to deny inbound traffic. Maybe that was a stretch, but still fun stuff.</p> 
